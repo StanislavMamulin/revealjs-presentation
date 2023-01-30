@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/league.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Electron</h1>
+					<img data-src="./assets/images/logo.png" class="r-stretch">
+					<p>
+						<small>Stanislav Mamulin - 2023</small>
+					</p>
+					<aside class="notes">
+						Hello. My name is Stanislav. And I want to talk about one interesting framework - Electron.
+					</aside>
+				</section>
+				<section>
+					<h1>JavaScript is everywhere</h1>
+					<p>JavaScript is a programming language for a wide range of tasks:</p>
+					<ul>
+						<li class="fragment fade-in">Frontend (the main programming language)</li>
+						<li class="fragment fade-in">Backend (Node.js, Deno, …)</li>
+						<li class="fragment fade-in">Mobile (ReactNative, NativeScripts, Ionic, …)</li>
+						<li class="fragment fade-in">IoT (JerryScript, QuickJS, …)</li>
+						<li class="fragment fade-in">Desktop (NW.js, Electron, Neutralinojs, …)</li>
+					</ul>
+					<aside class="notes">
+						It was originally created to add interactivity to web pages. But over time, it began to be used in completely different areas - on backend, on the Internet of things, to create native mobile applications, and other areas. Also, for some time now, it has become possible to use JavaScript to write native applications for desktops.
+					</aside>
+				</section>
+				<section>
+					<h1 class="r-fit-text">Why do we need desktop applications if there is an Internet?</h1>
+				</section>
+				<section>
+					<h1 class="r-fit-text">Pros of Desktop apps</h1>
+					<ul>
+						<li class="fragment fade-in">No internet required to run and use the app</li>
+						<li class="fragment fade-in">No need to download anything to run</li>
+						<li class="fragment fade-in">Have access to computer resources</li>
+						<li class="fragment fade-in">Full control over the available features of the runtime</li>
+						<li class="fragment fade-in">Backend independence</li>
+					</ul>
+					<aside class="notes">
+						<p>- No internet required to run and use the app</p>
+						<p>- At startup, you don’t need to wait for any data to be downloaded from the network</p>
+						<p>- Have access to computer resources</p>
+						<p>- Full control over the available features of the runtime. It does not depend on the web browser in which your code will run.</p>
+						<p>- If the server is undergoing maintenance or has problems, this will not affect the users in any way.</p>
+					</aside>
+				</section>
+				<section>
+					<h1>Desktop app on JS</h1>
+					<ul>
+						<li class="fragment fade-in">Developing desktop apps is very difficult</li>
+						<li class="fragment fade-in">JavaScript couldn’t stay away :)</li>
+						<li class="fragment fade-in">Node.js comes to the rescue</li>
+						<li class="fragment fade-in">Main frameworks: NW.js and Electron</li>
+					</ul>
+					<aside class="notes">
+						<p>  
+							Usually desktop applications require knowledge of programming languages like C++, C# and frameworks like .NET, QT, GTK. This can be a barrier for many developers.
+							<br><br>Hearing about these advantages and problems of development of the desktop apps, JavaScript couldn’t stay away :)
+							<br><br>Thanks to the Node.JS framework, it became possible not only to write applications for the backend, but also to create programs for desktop computers.
+							<br><br>For this, special frameworks are used, the main ones are NW.js and Electron. The latter is more popular at the moment.
+						</p>
+					</aside>
+				</section>
+				<section>
+					<h1>Electron</h1>
+					<ul>
+						<li>HTML, CSS and JavaScript are the basis</li>
+						<li>Share code between a desktop and a web applications</li>
+					</ul>
+					<aside class="notes">
+						Electron allows you to create desktop applications using the tools and languages ​​that are familiar to many: HTML, CSS and JavaScript are the basis.
+						This allows you to share code between a desktop application and a web applications.
+					</aside>
+				</section>
+				<section>
+					<h1>Features</h1>
+					<ul>
+						<li>Web Technologies</li>
+						<li class="fragment fade-in">Cross Platform</li>
+						<li class="fragment fade-in">Native graphic user interface</li>
+						<li class="fragment fade-in">Automatic software updates</li>
+						<li class="fragment fade-in">Application installers</li>
+						<li class="fragment fade-in">App store distribution</li>
+						<li class="fragment fade-in">Crash reporting</li>
+					</ul>
+					<aside class="notes">
+						Web Technologies<br>Electron embeds Chromium and Node.js.<br><br>
+						Cross Platform.<br>Compatible with macOS, Windows, and Linux.<br><br>
+						Native graphic user interface.<br>Electron can interact with operating system's interfaces by using special APIs.<br><br>
+						Automatic software updates.<br>
+						It can deliver a new version of applications with autoUpdater module.<br><br>
+						Application installers.<br>
+						It can generate installers for the main OSes.<br><br>
+						App store distribution. <br>
+						Electron has support stores of macOS, Windows and Linux.<br><br>
+						Crash reporting. <br>
+						Automatically collect JavaScript and native crash data with the crashReporter module.
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h1>Architecture</h1>
+						<img data-src="./assets/images/architecture.png" class="r-stretch">
+						<aside class="notes">
+							The architecture is very similar to modern browsers. Applications per electron are built around a single manager or "main" process that can run multiple "renderer" processes to render content.
+						</aside>
+					</section>
+					<section>
+						<h2>The main process</h2>
+						<ul>
+							<li>Entry point for the entire application</li>
+							<li>Create and manage content windows</li>
+							<li>Manages the application life cycle</li>
+							<li>Interacting with the user's operating system</li>
+						</ul>
+						<aside class="notes">
+							Serves as the entry point for the entire application.<br><br>It runs in a Node.js environment.<br><br>The main purpose is to create and manage content windows using the BrowserWindow module.<br><br>It also manages the application life cycle and contains an API for interacting with the user's operating system.
+						</aside>
+					</section>
+					<section>
+						<h2>The renderer process</h2>
+						<ul>
+							<li>Display content</li>
+							<li>One window - one render process</li>
+						</ul>
+						<aside class="notes">
+							Used to display content.<br>A separate render process is created for each open window.<br>The entry point for the process is an HTML file.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h1>Tools</h1>
+					<img data-src="./assets/images/tools.png" class="r-stretch">
+					<aside class="notes">
+						You can use the tools you love and use every day.<br>Like React, Angular, TypeScript, SASS and so on.
+					</aside>
+				</section>
+				<section>
+					<h2>Apps using Electron</h2>
+					<img data-src="./assets/images/apps.png" class="r-stretch">
+					<aside class="notes">
+						A lot of companies use Electron to develop their applications. The most popular applications are:
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h1>Practical part</h1>
+						<h2 class="r-fit-text">Convert existing SPA into Desktop App</h2>
+						<aside class="notes">
+							For the practical part, I will convert existing SPA from one of the tasks in RS School (Async race) into a desktop application.
+						</aside>
+					</section>
+					<section>
+						<h2>Install Electron framework</h2>
+						<small>The main requirement is Node.js installed. Recommended last LTS version.</small>
+						<ol>
+							<li class="fragment fade-in">
+								<p>Create a folder and initialise npm in it</p>
+								<pre><code data-trim data-noescape>
+									mkdir electron-async-race      
+									cd electron-async-race
+									npm init
+								</code></pre>
+							</li>
+							<li class="fragment fade-in">
+								<p>Install Electron as dev-dependency</p>
+								<pre><code class="language-coffeescript" data-trim data-noescape>
+									npm install -D electron
+								</code></pre>
+							</li>
+							<li class="fragment fade-in">
+								<p>Add to package.json in the scripts section the line for start application:</p>
+								<pre><code data-trim data-noescape>
+									"scripts": {
+										"start": "electron .",
+									  },
+								</code></pre>
+							</li>
+						</ol>
+						<aside class="notes">
+							First, let's install and create the basis of the Electron application.
+						</aside>
+					</section>
+					<section>
+						<h3>Create the basis of the Electron application</h3>
+						<ul>
+							<li class="fragment fade-in">
+								<p>Import the necessary modules:</p>
+								<pre ><code class="r-fit-text" class="js" data-trim data-line-numbers>
+									const { app, BrowserWindow } = require(‘electron’)
+								</code></pre>
+							</li>
+							<li class="fragment fade-in"><p>Create a function to load the HTML:</p>
+								<pre><code class="js" data-trim data-line-numbers data-ln-start-from="2">
+									const createWindow = () => {
+										const win = new BrowserWindow({
+											width: 600,
+											height: 700
+										})
+										
+										win.loadFile('index.html')
+									}
+									
+									app.whenReady().then(() => {
+										createWindow()
+									})
+								</code></pre>
+							</li>
+						</ul>
+						<aside class="notes">
+							Create the basis of the Electron application<br> 
+							In main.js file.<br>
+							To display content in the application window, we need two Electron modules:<br>
+							1) app module that is responsible for the application lifecycle<br>
+							2) BrowserWindows is a module that creates and manages an application window.<br>
+							<br><br>The line win.loadFile('index.html') determines which HTML file will be loaded for display, which will be our entry point.
+							<br><br>In line 11 we are waiting for the "ready" state for the app module. And only after that we can create our window with content.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section data-auto-animate>
+						<h1 class="r-fit-text">Move Async race on Electron</h1>
+						<aside class="notes">
+							Move Async race on Electron
+						</aside>
+					</section>
+					<section data-auto-animate>
+						<h1 style="font-size: 2rem">Move Async race on Electron</h1>
+						<p>Copy the Async race files from the Webpack build folder to the folder with the main.js file.</p>
+						<p class="r-fit-text">3 files: index.html, main.eca17...js, 4a6f...png</p>
+						<img data-src="./assets/images/MoveFiles.png"  class="r-stretch">
+					</section>
+					<section data-auto-animate>
+						<h1 style="font-size: 2rem">Move Async race on Electron</h1>
+						<p>Start the app</p>
+						<pre><code class="language-coffeescript">
+							npm start
+						</code></pre>
+						<aside class="notes">
+							Run npm start in the console and a window with Async race appears in front of us. Like Magic! :)
+						</aside>
+					</section>
+					<section data-auto-animate>
+						<h1 style="font-size: 2rem">Move Async race on Electron</h1>
+						<p>Start the app</p>
+						<pre><code class="language-coffeescript">
+							npm start
+						</code></pre>
+						<img data-src="./assets/images/AsyncRaceDesktop.png" class="r-stretch">
+						<aside class="notes">
+							Run npm start in the console and a window with Async race appears in front of us. Like Magic! :)
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h1 class="r-fit-text">Create an executable file for our races</h1>
+					<p>To do this, we will use Electron Forge</p>
+					<pre class="fragment fade-in"><code class="language-coffeescript">
+						npm i -D @electron-forge/cli
+					</code></pre>
+					<pre class="fragment fade-in"><code class="language-coffeescript">
+						npx electron-forge import
+					</code></pre>
+					<pre class="fragment fade-in"><code class="language-coffeescript">
+						npm run make
+					</code></pre>
+					<div class="fragment fade-in">
+						<img data-src="./assets/images/Executable.png">
+						<p class="r-fit-text">The size of the distribution kit turned out to be almost 210 Mbytes, the original size of HTML + CSS + JS is 65 Kbytes.</p>
+					</div>
+					<aside class="notes">
+						Install it as a dev dependency<br>
+						Run the setup Forge`s scaffolding<br>
+						Start creating a distribution<br>
+						By default, a package is created for the current OS. Creation for other platforms is material for a separate presentation :)
+					</aside>
+				</section>
+				<section>
+					<section data-auto-animate>
+						<h1 class="r-fit-text">Pros and cons of Electron</h1>
+						<aside class="notes">
+							Let's talk about the pros and cons of Electron
+						</aside>
+					</section>
+					<section data-auto-animate>
+						<h1 class="r-fit-text">Pros and Cons of Electron</h1>
+						<h2>Pros:</h2>
+						<ul>
+							<li>Ability to use familiar web technology stack to develop Desktop apps</li>
+						</ul>
+						<aside class="notes">
+							Pros:<br>
+							Ability to use familiar web technology stack to develop Desktop apps
+						</aside>
+					</section>
+					<section data-auto-animate>
+						<h1 class="r-fit-text">Pros and Cons of Electron</h1>
+						<h2>Cons:</h2>
+						<ul>
+							<li>Requires a lot of resources</li>
+							<li>Not cross platform build</li>
+						</ul>
+						<aside class="notes">
+							Cons:<br>
+							Every Electron program is a full-fledged Chromium browser that uses CPU and memory. For example, our simple program takes up about 210 Mbytes of disk space and uses about 300 Mbytes of RAM.<br><br>
+							Cross-platform to run, but not to build.<br>If the application has some native dependencies, then it can only be compiled on the target platform.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h1 class="r-fit-text">Conclusions</h1>
+					<aside class="notes">
+						That's how easy we set up the environment and ported our existing project to Electron.
+						<br>Of course, not all projects can be done so simply and may require further development.
+						<br><br>Electron is a great framework for building desktop apps using web technologies. --  If you can write web applications, then you can write desktop applications too. -- But with great power comes great responsibility. -- It's best suited for building really big products where the overhead is justified.
+						<br><br>Thanks for watching!
+					</aside>
+				</section>
+				<section>
+					<h1 class="r-fit-text">Thanks for watching!</h1>
+					<aside class="notes">
+						Thanks for watching!
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
